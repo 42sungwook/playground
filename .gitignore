@@ -3,7 +3,7 @@
 */dist-ssr
 */.env*
 */.DS_Store
-
+*.tsbuildinfo
 
 # frontend
 frontend/logs
@@ -24,3 +24,5 @@ frontend/*.ntvs*
 frontend/*.njsproj
 frontend/*.sln
 frontend/*.sw?
+
+frontend/.pnpm-store
