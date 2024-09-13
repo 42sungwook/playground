@@ -4,38 +4,41 @@ import { defineConfig } from 'vite'
 import svgr from 'vite-plugin-svgr'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+  const commonConfig = {
+    plugins: [react(), svgr()],
+    build: {
+      sourcemap: true
+    },
+    envDir: './env'
+  }
+
   if (command === 'serve') {
     return {
-      plugins: [react(), svgr()],
+      ...commonConfig,
       server: {
-        host: 'sungwook.dev',
+        host: mode === 'development' ? 'localhost' : 'sungwook.dev',
         port: 8080
       },
       preview: {
         host: 'localhost',
         port: 8080
-      },
-      build: {
-        sourcemap: true
-      },
-      envDir: './env'
+      }
     }
   }
-  // todo: ssl
+
+  // Production config
   return {
-    plugins: [react(), basicSsl(), svgr()],
+    ...commonConfig,
+    plugins: [...commonConfig.plugins, basicSsl()],
     server: {
+      https: true,
       host: 'sungwook.dev',
       port: 8080
     },
     preview: {
       host: 'localhost',
       port: 8080
-    },
-    build: {
-      sourcemap: true
-    },
-    envDir: './env'
+    }
   }
 })
