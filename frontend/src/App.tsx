@@ -21,9 +21,12 @@ function App() {
     fetchData()
   }, [])
 
+  const test = import.meta.env.VITE_TEST
+
   return (
     <>
       <div>Hello World! from Frontend</div>
+      <div>Test: {test}</div>
       <div>
         {error ? error : message ? `${message} from Backend` : 'Loading...'}
       </div>

@@ -13,6 +13,8 @@ jobs:
       DEFAULT_BUCKET_REGION: ${{ secrets.DEFAULT_BUCKET_REGION }}
       S3_BUCKET: ${{ secrets.S3_BUCKET }}
       CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      VITE_TEST: ${{ secrets.VITE_TEST }}
 
     steps:
       - name: Checkout source code
