@@ -5,4 +5,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install 18 && nvm use 18 || exit 1
 npm i -g pnpm || exit 1
-mkdir ~/backend
+mkdir ~/sungwook-backend
