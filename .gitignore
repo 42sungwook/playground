@@ -4,6 +4,7 @@
 */.DS_Store
 *.tsbuildinfo
 *.env
+*.pnpm-store
 
 # frontend
 frontend/logs
@@ -25,4 +26,3 @@ frontend/*.njsproj
 frontend/*.sln
 frontend/*.sw?
 
-frontend/.pnpm-store
