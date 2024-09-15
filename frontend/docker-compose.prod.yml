@@ -11,6 +11,8 @@ services:
       - /app/node_modules # node_modules를 제외
     ports:
       - '8080:8080'
+    env_file:
+      - ./env/.env
 
 volumes:
   node_modules:
