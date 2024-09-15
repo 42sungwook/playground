@@ -1,0 +1,35 @@
+name: Upload Backend to S3
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Deploy Prod
+    runs-on: ubuntu-22.04
+
+    environment: Production
+    env:
+      BACKEND_DEPLOY_FILENAME: ${{ secrets.BACKEND_DEPLOY_FILENAME }}
+      DEFAULT_BUCKET_REGION: ${{ secrets.DEFAULT_BUCKET_REGION }}
+      S3_BUCKET: ${{ secrets.S3_BUCKET_BACKEND }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Install AWS cli
+        run: |
+          sudo apt-get update
+          sudo apt-get install awscli
+
+      - name: Deploy code to AWS S3
+        run: |
+          zip -r $BACKEND_DEPLOY_FILENAME docker-compose.prod.yml app env deploy-script
+          aws s3 cp $BACKEND_DEPLOY_FILENAME s3://$S3_BUCKET/$BACKEND_DEPLOY_FILENAME --region $DEFAULT_BUCKET_REGION
+        working-directory: ./backend
