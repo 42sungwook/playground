@@ -23,7 +23,7 @@ os: linux
 #   "files" section altogether. A blank or incomplete "files" section
 #   may cause associated deployments to fail.
 files:
-  - source: ./app
+  - source: ./
     destination: /home/ubuntu/sungwook-backend/app
   # - source: ./.env
   #   destination: /home/ubuntu/sungwook-backend/env
