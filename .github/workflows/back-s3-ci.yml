@@ -32,4 +32,4 @@ jobs:
         run: |
           zip -r $BACKEND_DEPLOY_FILENAME docker-compose.prod.yml app env deploy-script
           aws s3 cp $BACKEND_DEPLOY_FILENAME s3://$S3_BUCKET/$BACKEND_DEPLOY_FILENAME --region $DEFAULT_BUCKET_REGION
-        working-directory: ./backend
+        working-directory: ./sungwook-backend
