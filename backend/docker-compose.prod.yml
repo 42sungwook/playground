@@ -24,9 +24,9 @@ os: linux
 #   may cause associated deployments to fail.
 files:
   - source: ./app
-    destination: /home/ubuntu/backend/app
-  - source: ./.env
-    destination: /home/ubuntu/backend/env
+    destination: /home/ubuntu/sungwook-backend/app
+  # - source: ./.env
+  #   destination: /home/ubuntu/sungwook-backend/env
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
 #   section here that describes special permissions to apply to the files
