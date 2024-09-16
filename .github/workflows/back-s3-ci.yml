@@ -12,7 +12,7 @@ jobs:
     env:
       DEPLOY_FILENAME: ${{ secrets.BACKEND_DEPLOY_FILENAME }}
       DEFAULT_BUCKET_REGION: ${{ secrets.DEFAULT_BUCKET_REGION }}
-      S3_BUCKET: ${{ secrets.S3_BUCKET_BACKEND }}
+      S3_BUCKET_BACKEND: ${{ secrets.S3_BUCKET_BACKEND }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -34,7 +34,7 @@ jobs:
 
       - name: Deploy code to AWS S3
         run: |
-          aws s3 cp "./$DEPLOY_FILENAME" "s3://$S3_BUCKET/" --region "$DEFAULT_BUCKET_REGION"
+          aws s3 cp "./$DEPLOY_FILENAME" "s3://$S3_BUCKET_BACKEND/" --region "$DEFAULT_BUCKET_REGION"
           if [ $? -ne 0 ]; then
             echo "Failed to upload file to S3"
             exit 1
