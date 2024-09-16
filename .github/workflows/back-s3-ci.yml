@@ -9,7 +9,6 @@ jobs:
     name: Deploy Prod
     runs-on: ubuntu-22.04
 
-    environment: Production
     env:
       BACKEND_DEPLOY_FILENAME: ${{ secrets.BACKEND_DEPLOY_FILENAME }}
       DEFAULT_BUCKET_REGION: ${{ secrets.DEFAULT_BUCKET_REGION }}
@@ -30,5 +29,5 @@ jobs:
 
       - name: Deploy code to AWS S3
         run: |
-          zip -r $BACKEND_DEPLOY_FILENAME ./backend/docker-compose.prod.yml ./backend ./backend/deploy-script
+          zip -r $BACKEND_DEPLOY_FILENAME ./backend
           aws s3 cp $BACKEND_DEPLOY_FILENAME s3://$S3_BUCKET/$BACKEND_DEPLOY_FILENAME --region $DEFAULT_BUCKET_REGION
