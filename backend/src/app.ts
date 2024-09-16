@@ -9,6 +9,10 @@ app.get('/api/hello', (req: Request, res: Response) => {
   res.json({ message: 'Hello World!' })
 })
 
+app.get('/api/world', (req: Request, res: Response) => {
+  res.json({ message: 'World!' })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
