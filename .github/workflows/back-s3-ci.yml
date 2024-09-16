@@ -32,8 +32,5 @@ jobs:
       - name: Zip backend files
         run: zip -r $DEPLOY_FILENAME ./backend
 
-      - name: List files (for debugging)
-        run: ls -l
-
       - name: Deploy code to AWS S3
         run: aws s3 cp ./$DEPLOY_FILENAME s3://$S3_BUCKET --region $DEFAULT_BUCKET_REGION
