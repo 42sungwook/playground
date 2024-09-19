@@ -1,7 +1,7 @@
 name: Upload Backend to S3
 
 on:
-  push:
+  release:
     branches: [main]
 
 jobs:
