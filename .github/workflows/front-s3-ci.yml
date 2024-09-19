@@ -48,4 +48,4 @@ jobs:
 
       - name: Invalidate CloudFront
         run: |
-          aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+          aws cloudfront create-invalidation --region $DEFAULT_BUCKET_REGION --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
