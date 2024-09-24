@@ -1,6 +1,7 @@
 import { useFrame, useThree, extend, ReactThreeFiber } from '@react-three/fiber'
 import { useRef } from 'react'
 import * as THREE from 'three'
+import { PerspectiveCamera } from '@react-three/drei'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 extend({ OrbitControls })
@@ -17,7 +18,6 @@ declare module '@react-three/fiber' {
 function Sphere() {
   const sphereRef = useRef<THREE.Mesh>(null)
   const { camera, gl } = useThree()
-  console.log(camera, gl)
 
   useFrame(() => {
     if (sphereRef.current) {
@@ -25,8 +25,13 @@ function Sphere() {
       sphereRef.current.rotation.x += 0.005
     }
   })
+
   return (
     <>
+      <PerspectiveCamera
+        makeDefault
+        position={[3, 3, 3]}
+      />
       <orbitControls args={[camera, gl.domElement]} />
       <mesh ref={sphereRef}>
         <sphereGeometry args={[1.5, 32, 32]} />
